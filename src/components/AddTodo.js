@@ -1,14 +1,29 @@
-import React from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
 
 const AddTodo = ({ handlerClick }) => {
+  const [value, setValue] = useState("");
+
   const pressHandler = () => {
-    handlerClick("test");
+    if (value.trim()) {
+      handlerClick(value);
+      setValue("");
+    } else {
+      Alert.alert('Can`t be empty')
+    }
   };
 
   return (
     <View style={styles.block}>
-      <TextInput style={styles.input} />
+      <TextInput
+        style={styles.input}
+        onChangeText={setValue}
+        value={value}
+        placeholder={"Enter task"}
+        autoCorrect={true}
+        keyboardType='default'
+        autoCapitalize="words"
+      />
       <Button title="Добавить" onPress={pressHandler} />
     </View>
   );
