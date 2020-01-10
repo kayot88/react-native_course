@@ -5,7 +5,6 @@ const Todo = ({ todo, removeOnClick, openTodo }) => {
     <TouchableOpacity
       activeOpacity={0.1}
       onPress={() => {
-        // console.log("Todo", todo);
         openTodo(todo.id);
       }}
       onLongPress={() => removeOnClick(todo.id)}
@@ -14,13 +13,13 @@ const Todo = ({ todo, removeOnClick, openTodo }) => {
         <Text>{todo.title}</Text>
       </View>
     </TouchableOpacity>
-    
   );
 };
 
 const styles = StyleSheet.create({
   todo: {
     flexDirection: "row",
+    // backgroundColor: "red",
     alignItems: "center",
     padding: 15,
     borderWidth: 1,
